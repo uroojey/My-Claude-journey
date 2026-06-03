@@ -1,0 +1,1283 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0)
+  }
+
+  .nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 1.25rem 0 1rem 0
+  }
+
+  .nav button {
+    padding: 6px 14px;
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-secondary);
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-sans)
+  }
+
+  .nav button.active {
+    background: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-primary);
+    font-weight: 500
+  }
+
+  .pg {
+    display: none
+  }
+
+  .pg.on {
+    display: block
+  }
+
+  .card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem
+  }
+
+  .card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--color-text-primary)
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-bottom: 8px
+  }
+
+  .card p:last-child {
+    margin-bottom: 0
+  }
+
+  pre {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 13px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin: 8px 0;
+    border: 0.5px solid var(--color-border-tertiary)
+  }
+
+  .kw {
+    color: #185FA5;
+    font-weight: 500
+  }
+
+  .cm {
+    color: var(--color-text-tertiary)
+  }
+
+  .str {
+    color: #0F6E56
+  }
+
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin-bottom: 10px
+  }
+
+  .p-green {
+    background: #EAF3DE;
+    color: #27500A
+  }
+
+  .p-amber {
+    background: #FAEEDA;
+    color: #633806
+  }
+
+  .p-red {
+    background: #FCEBEB;
+    color: #791F1F
+  }
+
+  .note {
+    border-left: 3px solid #7F77DD;
+    padding: 9px 12px;
+    background: #EEEDFE;
+    margin: 8px 0;
+    border-radius: 0
+  }
+
+  .note p {
+    font-size: 13px;
+    color: #3C3489;
+    line-height: 1.6;
+    font-style: italic
+  }
+
+  .note-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #534AB7;
+    margin-bottom: 3px
+  }
+
+  .tip {
+    border-left: 3px solid #EF9F27;
+    padding: 9px 12px;
+    background: #FAEEDA;
+    margin: 8px 0;
+    border-radius: 0
+  }
+
+  .tip p {
+    font-size: 13px;
+    color: #633806;
+    line-height: 1.6
+  }
+
+  .use {
+    border-left: 3px solid #1D9E75;
+    padding: 9px 12px;
+    background: #E1F5EE;
+    margin: 8px 0;
+    border-radius: 0
+  }
+
+  .use p {
+    font-size: 13px;
+    color: #085041;
+    line-height: 1.6
+  }
+
+  .sec-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 .75rem
+  }
+
+  .dtable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    margin: 8px 0
+  }
+
+  .dtable th {
+    background: #0C447C;
+    color: #E6F1FB;
+    padding: 6px 9px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500
+  }
+
+  .dtable td {
+    padding: 6px 9px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    color: var(--color-text-secondary)
+  }
+
+  .dtable tr:nth-child(even) td {
+    background: var(--color-background-secondary)
+  }
+
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 6px 0
+  }
+
+  .ref-table th {
+    background: var(--color-background-secondary);
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 0.5px solid var(--color-border-secondary);
+    color: var(--color-text-primary)
+  }
+
+  .ref-table td {
+    padding: 7px 10px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    color: var(--color-text-secondary)
+  }
+
+  .ref-table tr:last-child td {
+    border-bottom: none
+  }
+
+  .exec-row {
+    display: flex;
+    margin: 10px 0;
+    overflow-x: auto;
+    gap: 0
+  }
+
+  .exec-step {
+    flex: 1;
+    min-width: 68px;
+    text-align: center;
+    padding: 8px 4px;
+    border: 0.5px solid var(--color-border-tertiary)
+  }
+
+  .exec-step:first-child {
+    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md)
+  }
+
+  .exec-step:last-child {
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0
+  }
+
+  .exec-step .n {
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 2px
+  }
+
+  .exec-step .c {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    color: var(--color-text-primary)
+  }
+
+  .exec-step.hi {
+    background: #E6F1FB;
+    border-color: #85B7EB
+  }
+
+  .exec-step.hi .c {
+    color: #0C447C
+  }
+
+  .q-item {
+    border-left: 3px solid #AFA9EC;
+    background: var(--color-background-primary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    border-right: 0.5px solid var(--color-border-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    padding: 11px 13px;
+    margin-bottom: 10px
+  }
+
+  .q-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: #534AB7;
+    margin-bottom: 3px
+  }
+
+  .q-text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--color-text-primary)
+  }
+
+  .q-toggle {
+    font-size: 12px;
+    color: #185FA5;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: var(--font-sans);
+    margin-top: 4px
+  }
+
+  .q-body {
+    display: none;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 0.5px solid var(--color-border-tertiary)
+  }
+
+  .q-body p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.65
+  }
+
+  .join-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0
+  }
+
+  .join-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 12px
+  }
+
+  .join-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--color-text-primary)
+  }
+
+  .join-card p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: 1px
+  }
+</style>
+
+<h2 class="sr-only">Founder's SQL guide for beginners — interactive lessons covering SELECT through subqueries,
+  real-life usage, and interview prep</h2>
+
+<div class="nav" id="nav">
+  <button class="active" onclick="go('intro',this)">Intro</button>
+  <button onclick="go('l1',this)">Level 1</button>
+  <button onclick="go('l2',this)">Level 2</button>
+  <button onclick="go('l3',this)">Level 3</button>
+  <button onclick="go('l4',this)">Level 4</button>
+  <button onclick="go('l5',this)">Level 5</button>
+  <button onclick="go('realworld',this)">Real-world</button>
+  <button onclick="go('interview',this)">Interview prep</button>
+</div>
+
+<div id="intro" class="pg on">
+  <div class="note">
+    <div class="note-label">founder's note</div>
+    <p>"I've hired dozens of analysts and engineers. The ones who stood out weren't the ones who memorised syntax — they
+      were the ones who understood why SQL matters. Every app you use stores data in tables. SQL is how you read that
+      data, question it, and turn it into decisions. Learn this well and you'll never need to wait on a BI team again."
+    </p>
+  </div>
+
+  <p class="sec-label">what is SQL?</p>
+  <div class="card">
+    <h3>SQL is the language of data</h3>
+    <p>SQL — Structured Query Language — lets you talk to a database. Think of a database as a collection of Excel
+      sheets that are connected to each other, can hold millions of rows, and respond to precise questions instantly.
+      Every company uses one.</p>
+  </div>
+
+  <p class="sec-label">the dataset we'll use throughout</p>
+  <div class="card">
+    <h3>The <code style="font-family:var(--font-mono);font-size:13px;color:#185FA5">orders</code> table</h3>
+    <p style="margin-bottom:10px">One sales team's order data. Every query in this guide runs against this table.</p>
+    <div style="overflow-x:auto">
+      <table class="dtable">
+        <tr>
+          <th>id</th>
+          <th>customer</th>
+          <th>city</th>
+          <th>product</th>
+          <th>amount</th>
+          <th>status</th>
+          <th>order_date</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Priya Sharma</td>
+          <td>Mumbai</td>
+          <td>CRM Pro</td>
+          <td>12000</td>
+          <td>paid</td>
+          <td>2024-01-10</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Rahul Gupta</td>
+          <td>Delhi</td>
+          <td>Analytics</td>
+          <td>8500</td>
+          <td>paid</td>
+          <td>2024-01-18</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Ananya Iyer</td>
+          <td>Bengaluru</td>
+          <td>CRM Pro</td>
+          <td>15000</td>
+          <td>paid</td>
+          <td>2024-02-05</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Vikram Singh</td>
+          <td>Delhi</td>
+          <td>Analytics</td>
+          <td>6000</td>
+          <td>refunded</td>
+          <td>2024-02-20</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Sneha Patel</td>
+          <td>Mumbai</td>
+          <td>CRM Pro</td>
+          <td>11000</td>
+          <td>paid</td>
+          <td>2024-03-08</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Rahul Gupta</td>
+          <td>Delhi</td>
+          <td>CRM Pro</td>
+          <td>9500</td>
+          <td>pending</td>
+          <td>2024-03-22</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Priya Sharma</td>
+          <td>Mumbai</td>
+          <td>Analytics</td>
+          <td>7200</td>
+          <td>paid</td>
+          <td>2024-04-03</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Ananya Iyer</td>
+          <td>Bengaluru</td>
+          <td>Analytics</td>
+          <td>13000</td>
+          <td>pending</td>
+          <td>2024-04-17</td>
+        </tr>
+      </table>
+    </div>
+    <p style="margin-top:8px;font-size:12px;color:var(--color-text-tertiary)">8 rows · 7 columns</p>
+
+    <!-- PASTE YOUR URL BELOW BETWEEN THE QUOTES -->
+    <div style="margin-top: 15px;">
+      <a href="https://github.com/uroojey/My-Claude-journey/blob/main/Day3.md" target="_blank"
+        style="color: #185FA5; font-size: 13px; font-weight: 500; font-family: var(--font-sans); text-decoration: underline;">
+        🔗 View Original File on GitHub
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<p class="sec-label">key vocabulary</p>
+<div class="card">
+  <table class="ref-table">
+    <tr>
+      <th>Term</th>
+      <th>Plain-English meaning</th>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">table</code></td>
+      <td>A grid of rows and columns — like one Excel sheet</td>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">row / record</code></td>
+      <td>One entry — e.g. one order</td>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">column / field</code></td>
+      <td>One attribute of every row — e.g. amount, city</td>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">query</code></td>
+      <td>An instruction you write in SQL to retrieve or change data</td>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">NULL</code></td>
+      <td>A missing value — not zero, not empty string, just absent</td>
+    </tr>
+    <tr>
+      <td><code style="font-family:var(--font-mono)">primary key</code></td>
+      <td>A unique ID for each row — never NULL, never duplicate</td>
+    </tr>
+  </table>
+</div>
+<button onclick="sendPrompt('Explain SQL data types — INT, VARCHAR, DATE, DECIMAL — with examples')">Go deeper on data
+  types ↗</button>
+</div>
+
+<div id="l1" class="pg">
+  <span class="pill p-green">level 1 — beginner</span>
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"SELECT is the foundation of everything. 90% of the queries your entire data team runs are SELECT statements.
+      Master reading data before you touch anything else."</p>
+  </div>
+
+  <p class="sec-label">SELECT · FROM · AS</p>
+  <div class="card">
+    <h3>Fetch all data</h3>
+    <pre><span class="kw">SELECT</span> *
+<span class="kw">FROM</span>   orders;
+
+<span class="cm">-- * means "all columns"</span>
+<span class="cm">-- Returns all 8 rows, all 7 columns</span></pre>
+    <div class="use">
+      <p>Real life: A founder opens their dashboard — the app runs this query behind the scenes to populate the orders
+        table on screen.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Fetch specific columns</h3>
+    <pre><span class="kw">SELECT</span> customer, product, amount
+<span class="kw">FROM</span>   orders;
+
+<span class="cm">-- Returns only 3 columns for all 8 rows</span>
+<span class="cm">-- Always name columns — faster, cleaner</span></pre>
+    <div class="use">
+      <p>Real life: Finance needs only customer names and amounts for an invoice check — not dates or cities.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Rename columns with AS</h3>
+    <pre><span class="kw">SELECT</span>
+  customer  <span class="kw">AS</span> <span class="str">"Customer Name"</span>,
+  amount    <span class="kw">AS</span> <span class="str">"Order Value"</span>
+<span class="kw">FROM</span> orders;
+
+<span class="cm">-- AS renames the column in output only</span>
+<span class="cm">-- The actual table is unchanged</span></pre>
+    <div class="use">
+      <p>Real life: Preparing a board-ready report where column headers must be human-readable, not database-code.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <p>Pitfall: <code style="font-family:var(--font-mono);font-size:12px">SELECT *</code> is fine for exploration but
+      avoid it in production code — it pulls unnecessary data, slows queries, and breaks things when columns are added
+      or removed.</p>
+  </div>
+
+  <p class="sec-label">practice</p>
+  <div class="card">
+    <p>1. Write a query showing only <code style="font-family:var(--font-mono);font-size:12px">customer</code>, <code
+        style="font-family:var(--font-mono);font-size:12px">city</code>, and <code
+        style="font-family:var(--font-mono);font-size:12px">status</code>.</p>
+    <p>2. Alias <code style="font-family:var(--font-mono);font-size:12px">amount</code> as "Revenue" in the output.</p>
+    <p>3. How many unique products can you spot in the table?</p>
+  </div>
+</div>
+
+<div id="l2" class="pg">
+  <span class="pill p-green">level 2 — beginner</span>
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"WHERE is where business logic lives. Every segment, every filter, every cohort in your analytics — it's all a
+      WHERE clause. Get comfortable writing conditions and you'll be answering business questions in minutes instead of
+      days."</p>
+  </div>
+
+  <p class="sec-label">WHERE — filtering rows</p>
+  <div class="card">
+    <h3>Simple filter</h3>
+    <pre><span class="kw">SELECT</span> customer, amount
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'paid'</span>;
+
+<span class="cm">-- Returns 5 rows — all paid orders</span>
+<span class="cm">-- Text values always need single quotes</span></pre>
+    <div class="use">
+      <p>Real life: Revenue report — show only paid orders, exclude pending and refunded.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Multiple conditions — AND, OR</h3>
+    <pre><span class="kw">SELECT</span> customer, city, amount
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  city = <span class="str">'Mumbai'</span>
+  <span class="kw">AND</span>  status = <span class="str">'paid'</span>;
+
+<span class="cm">-- Both conditions must be true</span>
+<span class="cm">-- Result: Priya (12000), Priya (7200), Sneha (11000)</span></pre>
+    <div class="use">
+      <p>Real life: Mumbai-specific revenue for a regional sales review.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Numeric comparisons and IN</h3>
+    <pre><span class="kw">SELECT</span> customer, amount
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  amount > 10000;
+
+<span class="cm">-- Operators: =  !=  >  <  >=  <=</span>
+
+<span class="kw">SELECT</span> customer, status
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status <span class="kw">IN</span> (<span class="str">'paid'</span>, <span class="str">'pending'</span>);
+
+<span class="cm">-- IN is shorthand for multiple OR conditions</span></pre>
+    <div class="use">
+      <p>Real life: Flag all active orders (paid + pending) for a pipeline review — exclude refunded.</p>
+    </div>
+  </div>
+
+  <p class="sec-label">ORDER BY · LIMIT · DISTINCT</p>
+  <div class="card">
+    <h3>Sort + limit results</h3>
+    <pre><span class="kw">SELECT</span> customer, amount
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+<span class="kw">ORDER BY</span> amount <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> 3;
+
+<span class="cm">-- DESC = highest first · ASC = lowest first</span>
+<span class="cm">-- LIMIT 3 returns only top 3 rows</span></pre>
+    <div class="use">
+      <p>Real life: Homepage "Top 3 orders this month" widget on your dashboard.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Remove duplicates with DISTINCT</h3>
+    <pre><span class="kw">SELECT DISTINCT</span> city
+<span class="kw">FROM</span>   orders;
+
+<span class="cm">-- Returns: Mumbai, Delhi, Bengaluru</span>
+<span class="cm">-- Mumbai and Delhi appeared multiple times</span>
+<span class="cm">-- DISTINCT removes the repeats</span></pre>
+    <div class="use">
+      <p>Real life: Populating a city filter dropdown in your app — you need unique values only.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <p>Pitfall: LIMIT without ORDER BY returns a random subset. The database picks whichever rows are fastest to
+      retrieve. Always sort before limiting if you care about which rows you get.</p>
+  </div>
+
+  <p class="sec-label">practice</p>
+  <div class="card">
+    <p>1. Find all orders from Delhi with amount greater than 7000.</p>
+    <p>2. Show the 2 most expensive orders by amount.</p>
+    <p>3. List all unique products — no duplicates.</p>
+    <p>4. Find all orders that are NOT paid. (Hint: <code
+        style="font-family:var(--font-mono);font-size:12px">!= 'paid'</code> or <code
+        style="font-family:var(--font-mono);font-size:12px">NOT IN</code>)</p>
+  </div>
+</div>
+
+<div id="l3" class="pg">
+  <span class="pill p-amber">level 3 — intermediate</span>
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"The moment you learn GROUP BY, you stop answering 'show me the data' and start answering 'what does the data
+      mean'. Every KPI, every weekly metric, every investor update number comes from a GROUP BY query."</p>
+  </div>
+
+  <p class="sec-label">aggregate functions</p>
+  <div class="card">
+    <h3>The five core aggregates</h3>
+    <pre><span class="kw">SELECT</span>
+  <span class="kw">COUNT</span>(*)         <span class="kw">AS</span> total_orders,
+  <span class="kw">SUM</span>(amount)      <span class="kw">AS</span> total_revenue,
+  <span class="kw">AVG</span>(amount)      <span class="kw">AS</span> avg_order,
+  <span class="kw">MAX</span>(amount)      <span class="kw">AS</span> biggest_order,
+  <span class="kw">MIN</span>(amount)      <span class="kw">AS</span> smallest_order
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'paid'</span>;
+
+<span class="cm">-- Result: 5 | 55700 | 11140 | 15000 | 7200</span></pre>
+    <div class="use">
+      <p>Real life: The Monday morning revenue Slack message your CEO sends — this one query produces all the numbers in
+        it.</p>
+    </div>
+  </div>
+
+  <p class="sec-label">GROUP BY — summaries per group</p>
+  <div class="card">
+    <h3>Revenue per city</h3>
+    <pre><span class="kw">SELECT</span>
+  city,
+  <span class="kw">COUNT</span>(*)       <span class="kw">AS</span> orders,
+  <span class="kw">SUM</span>(amount)    <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+<span class="kw">GROUP BY</span> city
+<span class="kw">ORDER BY</span> revenue <span class="kw">DESC</span>;
+
+<span class="cm">-- Mumbai: 3 orders, ₹30200</span>
+<span class="cm">-- Bengaluru: 2 orders, ₹28000</span>
+<span class="cm">-- Delhi: 1 order, ₹8500</span></pre>
+    <div class="use">
+      <p>Real life: Regional performance slide in a board deck — which cities are driving the most revenue.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue per product</h3>
+    <pre><span class="kw">SELECT</span>
+  product,
+  <span class="kw">COUNT</span>(*)      <span class="kw">AS</span> units_sold,
+  <span class="kw">SUM</span>(amount)   <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">GROUP BY</span> product;
+
+<span class="cm">-- CRM Pro: 5 orders  (including pending)</span>
+<span class="cm">-- Analytics: 3 orders</span></pre>
+    <div class="use">
+      <p>Real life: Which product is actually selling — classic founder question at the end of every month.</p>
+    </div>
+  </div>
+
+  <p class="sec-label">HAVING — filter groups, not rows</p>
+  <div class="card">
+    <h3>WHERE vs HAVING — the most common interview trap</h3>
+    <pre><span class="cm">-- WHERE filters rows BEFORE grouping</span>
+<span class="cm">-- HAVING filters groups AFTER grouping</span>
+
+<span class="kw">SELECT</span> city, <span class="kw">SUM</span>(amount) <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">GROUP BY</span> city
+<span class="kw">HAVING SUM</span>(amount) > 15000;
+
+<span class="cm">-- Only cities with total revenue above 15000</span>
+
+<span class="cm">-- ❌ This causes an error:</span>
+<span class="cm">-- WHERE SUM(amount) > 15000</span></pre>
+    <div class="use">
+      <p>Real life: Find customer segments that crossed a spending threshold — trigger a loyalty reward automatically.
+      </p>
+    </div>
+  </div>
+
+  <p class="sec-label">SQL execution order — memorise this</p>
+  <div class="exec-row">
+    <div class="exec-step">
+      <div class="n">1</div>
+      <div class="c">FROM</div>
+    </div>
+    <div class="exec-step">
+      <div class="n">2</div>
+      <div class="c">WHERE</div>
+    </div>
+    <div class="exec-step hi">
+      <div class="n">3</div>
+      <div class="c">GROUP BY</div>
+    </div>
+    <div class="exec-step hi">
+      <div class="n">4</div>
+      <div class="c">HAVING</div>
+    </div>
+    <div class="exec-step">
+      <div class="n">5</div>
+      <div class="c">SELECT</div>
+    </div>
+    <div class="exec-step">
+      <div class="n">6</div>
+      <div class="c">ORDER BY</div>
+    </div>
+    <div class="exec-step">
+      <div class="n">7</div>
+      <div class="c">LIMIT</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--color-text-tertiary);margin-top:4px">This order explains why you can't use a
+    SELECT alias in WHERE — SELECT hasn't run yet at that point.</p>
+
+  <p class="sec-label">practice</p>
+  <div class="card">
+    <p>1. Find total revenue per product for paid orders only.</p>
+    <p>2. Which city has the highest average order amount?</p>
+    <p>3. Show cities where total paid revenue exceeds ₹20,000 (use HAVING).</p>
+    <p>4. Count orders by status — how many paid, pending, and refunded?</p>
+  </div>
+</div>
+
+<div id="l4" class="pg">
+  <span class="pill p-amber">level 4 — intermediate</span>
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"JOINs are where SQL gets real. Every interesting business question involves more than one table. The moment you
+      understand JOINs, you stop needing someone else to build the report for you."</p>
+  </div>
+
+  <p class="sec-label">a second table for our joins</p>
+  <div class="card">
+    <h3>The <code style="font-family:var(--font-mono);font-size:13px;color:#185FA5">customers</code> table</h3>
+    <div style="overflow-x:auto">
+      <table class="dtable">
+        <tr>
+          <th>cust_id</th>
+          <th>name</th>
+          <th>plan</th>
+          <th>account_manager</th>
+        </tr>
+        <tr>
+          <td>C1</td>
+          <td>Priya Sharma</td>
+          <td>Enterprise</td>
+          <td>Arjun</td>
+        </tr>
+        <tr>
+          <td>C2</td>
+          <td>Rahul Gupta</td>
+          <td>Starter</td>
+          <td>Meera</td>
+        </tr>
+        <tr>
+          <td>C3</td>
+          <td>Ananya Iyer</td>
+          <td>Enterprise</td>
+          <td>Arjun</td>
+        </tr>
+        <tr>
+          <td>C4</td>
+          <td>Vikram Singh</td>
+          <td>Starter</td>
+          <td>Meera</td>
+        </tr>
+        <tr>
+          <td>C5</td>
+          <td>Sneha Patel</td>
+          <td>Pro</td>
+          <td>Arjun</td>
+        </tr>
+        <tr>
+          <td>C6</td>
+          <td>New Lead</td>
+          <td>Trial</td>
+          <td>Meera</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--color-text-tertiary);margin-top:6px">"New Lead" exists in customers but has no
+      orders yet.</p>
+  </div>
+
+  <p class="sec-label">join types at a glance</p>
+  <div class="join-grid">
+    <div class="join-card">
+      <h4><span class="dot" style="background:#185FA5"></span>INNER JOIN</h4>
+      <p>Only rows that match in both tables. "New Lead" disappears — no orders to match.</p>
+    </div>
+    <div class="join-card">
+      <h4><span class="dot" style="background:#0F6E56"></span>LEFT JOIN</h4>
+      <p>All rows from left table, NULLs where right has no match. "New Lead" appears with NULL orders.</p>
+    </div>
+    <div class="join-card">
+      <h4>RIGHT JOIN</h4>
+      <p>All rows from right table + matching left. Rare — just flip the tables and use LEFT JOIN instead.</p>
+    </div>
+    <div class="join-card">
+      <h4>FULL OUTER JOIN</h4>
+      <p>All rows from both tables, NULLs filling gaps on either side.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>INNER JOIN — link orders to customer plans</h3>
+    <pre><span class="kw">SELECT</span>
+  o.customer,
+  c.plan,
+  c.account_manager,
+  o.amount,
+  o.status
+<span class="kw">FROM</span>   orders     <span class="kw">AS</span> o
+<span class="kw">INNER JOIN</span> customers <span class="kw">AS</span> c
+       <span class="kw">ON</span> o.customer = c.name;
+
+<span class="cm">-- o. and c. = table aliases (use them always)</span>
+<span class="cm">-- "New Lead" is excluded — no orders</span></pre>
+    <div class="use">
+      <p>Real life: Which plan tier is generating the most revenue? Enterprise vs Starter vs Pro.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>LEFT JOIN — include customers with zero orders</h3>
+    <pre><span class="kw">SELECT</span>
+  c.name,
+  c.plan,
+  <span class="kw">COUNT</span>(o.id)                    <span class="kw">AS</span> orders,
+  <span class="kw">COALESCE</span>(<span class="kw">SUM</span>(o.amount), 0)    <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>      customers <span class="kw">AS</span> c
+<span class="kw">LEFT JOIN</span> orders     <span class="kw">AS</span> o
+          <span class="kw">ON</span> c.name = o.customer
+<span class="kw">GROUP BY</span>  c.name, c.plan
+<span class="kw">ORDER BY</span>  revenue <span class="kw">DESC</span>;
+
+<span class="cm">-- "New Lead" appears with 0 orders and ₹0</span>
+<span class="cm">-- COALESCE turns NULL into 0</span></pre>
+    <div class="use">
+      <p>Real life: Customer health check — spot trial accounts that haven't converted yet so sales can follow up.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <p>Pitfall: Adding a WHERE filter on the right-side table after a LEFT JOIN secretly turns it into an INNER JOIN —
+      rows with no match get dropped. Put that filter in the ON clause instead of WHERE.</p>
+  </div>
+
+  <p class="sec-label">practice</p>
+  <div class="card">
+    <p>1. Using INNER JOIN, show each order alongside the customer's account manager.</p>
+    <p>2. Using LEFT JOIN, find customers who have placed zero orders.</p>
+    <p>3. What is the total paid revenue per plan tier? Use JOIN + GROUP BY.</p>
+  </div>
+  <button onclick="sendPrompt('Explain SQL self-joins with a real example using a reporting hierarchy')">Learn about
+    self-joins ↗</button>
+</div>
+
+<div id="l5" class="pg">
+  <span class="pill p-red">level 5 — advanced</span>
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"Subqueries and UNION separate juniors from seniors. A junior runs three queries and pastes results in a
+      spreadsheet. A senior writes one query and ships the answer in 30 seconds. That's the kind of person I want to
+      hire."</p>
+  </div>
+
+  <p class="sec-label">subqueries — queries inside queries</p>
+  <div class="card">
+    <h3>Orders above the average order value</h3>
+    <pre><span class="kw">SELECT</span> customer, amount
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  amount > (
+  <span class="kw">SELECT AVG</span>(amount)
+  <span class="kw">FROM</span>   orders
+  <span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+);
+
+<span class="cm">-- Inner query runs first → returns 11140</span>
+<span class="cm">-- Outer query: WHERE amount > 11140</span>
+<span class="cm">-- Result: Ananya 15000, Priya 12000, Ananya 13000</span></pre>
+    <div class="use">
+      <p>Real life: Flag high-value orders that need a personal thank-you from the founder.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Subquery in FROM — build a summary, then filter it</h3>
+    <pre><span class="kw">SELECT</span> city, avg_order
+<span class="kw">FROM</span> (
+  <span class="kw">SELECT</span>
+    city,
+    <span class="kw">ROUND</span>(<span class="kw">AVG</span>(amount), 0) <span class="kw">AS</span> avg_order
+  <span class="kw">FROM</span>   orders
+  <span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+  <span class="kw">GROUP BY</span> city
+) <span class="kw">AS</span> city_summary
+<span class="kw">WHERE</span> avg_order > 10000;
+
+<span class="cm">-- Inner query builds a per-city summary</span>
+<span class="cm">-- Outer query filters it — must alias the subquery</span></pre>
+    <div class="use">
+      <p>Real life: Which cities have a high enough average order to justify running a local event?</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>UNION — stack two result sets</h3>
+    <pre><span class="cm">-- UNION removes duplicates (slower)</span>
+<span class="cm">-- UNION ALL keeps all rows (faster)</span>
+
+<span class="kw">SELECT</span> customer, amount, <span class="str">'high-value'</span> <span class="kw">AS</span> flag
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  amount > 12000
+
+<span class="kw">UNION ALL</span>
+
+<span class="kw">SELECT</span> customer, amount, <span class="str">'pending'</span> <span class="kw">AS</span> flag
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'pending'</span>;
+
+<span class="cm">-- Combines two logically different lists</span>
+<span class="cm">-- Both queries must return same column count</span></pre>
+    <div class="use">
+      <p>Real life: One combined outreach list — high-value paid customers for upsell + pending customers for follow-up.
+      </p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <p>Pitfall: A subquery inside FROM must always have an alias (e.g. <code
+        style="font-family:var(--font-mono);font-size:12px">AS city_summary</code>). Forgetting it is a guaranteed
+      syntax error. Also: UNION requires matching column count and compatible types in both queries.</p>
+  </div>
+
+  <p class="sec-label">practice</p>
+  <div class="card">
+    <p>1. Find customers whose total spending exceeds the average total spending across all customers.</p>
+    <p>2. Using a subquery in FROM, show products with total revenue above ₹25,000.</p>
+    <p>3. UNION a list of paid orders from Mumbai with paid orders from Bengaluru.</p>
+  </div>
+  <button
+    onclick="sendPrompt('Explain CTEs (Common Table Expressions) and how they make subqueries more readable')">Learn
+    about CTEs ↗</button>
+</div>
+
+<div id="realworld" class="pg">
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"These aren't textbook exercises. These are the exact queries I've asked analysts to run at 10pm before a board
+      meeting. If you can write these fluently, you are genuinely valuable on day one."</p>
+  </div>
+
+  <p class="sec-label">scenario 1 — weekly revenue report</p>
+  <div class="card">
+    <h3>What lands in the CEO's inbox every Monday</h3>
+    <pre><span class="kw">SELECT</span>
+  city,
+  <span class="kw">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status=<span class="str">'paid'</span>)     <span class="kw">AS</span> paid,
+  <span class="kw">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status=<span class="str">'pending'</span>) <span class="kw">AS</span> pending,
+  <span class="kw">SUM</span>(amount) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status=<span class="str">'paid'</span>)   <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">GROUP BY</span> city
+<span class="kw">ORDER BY</span> revenue <span class="kw">DESC</span>;</pre>
+  </div>
+
+  <p class="sec-label">scenario 2 — data quality check</p>
+  <div class="card">
+    <h3>Find customers who placed more than one order</h3>
+    <pre><span class="kw">SELECT</span>
+  customer,
+  <span class="kw">COUNT</span>(*) <span class="kw">AS</span> order_count
+<span class="kw">FROM</span>   orders
+<span class="kw">GROUP BY</span> customer
+<span class="kw">HAVING COUNT</span>(*) > 1;
+
+<span class="cm">-- Priya and Rahul and Ananya each appear twice</span>
+<span class="cm">-- Useful for spotting duplicates or loyal customers</span></pre>
+  </div>
+
+  <p class="sec-label">scenario 3 — customer vs target</p>
+  <div class="card">
+    <h3>How much has each customer spent vs their plan limit?</h3>
+    <pre><span class="kw">SELECT</span>
+  c.name,
+  c.plan,
+  <span class="kw">COALESCE</span>(<span class="kw">SUM</span>(o.amount),0)        <span class="kw">AS</span> spent,
+  <span class="kw">ROUND</span>(100.0 *
+    <span class="kw">COALESCE</span>(<span class="kw">SUM</span>(o.amount),0)
+    / <span class="kw">CASE</span> c.plan
+        <span class="kw">WHEN</span> <span class="str">'Enterprise'</span> <span class="kw">THEN</span> 50000
+        <span class="kw">WHEN</span> <span class="str">'Pro'</span>        <span class="kw">THEN</span> 25000
+        <span class="kw">ELSE</span> 10000
+      <span class="kw">END</span>, 1)                        <span class="kw">AS</span> utilisation_pct
+<span class="kw">FROM</span>      customers c
+<span class="kw">LEFT JOIN</span> orders     o
+          <span class="kw">ON</span> c.name = o.customer
+         <span class="kw">AND</span> o.status = <span class="str">'paid'</span>
+<span class="kw">GROUP BY</span>  c.name, c.plan;</pre>
+    <div class="use">
+      <p>Real life: Customer success team's monthly health check — who's near their plan limit and ready for an upsell
+        conversation.</p>
+    </div>
+  </div>
+  <button onclick="sendPrompt('Show me how to write a SQL query for month-over-month revenue growth')">Month-over-month
+    growth query ↗</button>
+</div>
+
+<div id="interview" class="pg">
+  <div class="note">
+    <div class="note-label">founder's take</div>
+    <p>"Most people fail SQL rounds not because they don't know syntax — they fail because they can't explain their
+      reasoning out loud. Read the answer, close it, then explain it in your own words. That's the real skill being
+      tested."</p>
+  </div>
+
+  <p class="sec-label">conceptual questions</p>
+
+  <div class="q-item">
+    <div class="q-num">Q1 — CONCEPTUAL</div>
+    <p class="q-text">What is the difference between WHERE and HAVING?</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <p>WHERE filters individual rows before any grouping happens. HAVING filters groups after GROUP BY runs. You
+        cannot use aggregate functions like COUNT() or SUM() in a WHERE clause — the grouping hasn't happened yet so
+        there is nothing to aggregate. Use WHERE to reduce the rows going in; use HAVING to reduce the groups coming
+        out.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q2 — CONCEPTUAL</div>
+    <p class="q-text">What is the difference between DELETE, TRUNCATE, and DROP?</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <p>DELETE removes specific rows — you can add a WHERE clause and roll it back in a transaction. TRUNCATE removes
+        all rows instantly — much faster, but cannot be rolled back in most databases, and the table structure remains.
+        DROP removes the entire table including structure, constraints, and indexes — no recovery without a backup.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q3 — CONCEPTUAL</div>
+    <p class="q-text">What is NULL and how is it different from 0 or an empty string?</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <p>NULL means the value is unknown or absent. It is not zero and not an empty string — it is the complete absence
+        of any value. Any comparison with NULL using = or != returns unknown, not true or false. You must use IS NULL or
+        IS NOT NULL. Zero is a valid number. An empty string is a valid string of length zero. NULL is neither.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q4 — CONCEPTUAL</div>
+    <p class="q-text">What is the difference between INNER JOIN and LEFT JOIN?</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <p>INNER JOIN returns only rows that have a match in both tables — unmatched rows from either side are excluded.
+        LEFT JOIN returns every row from the left table regardless; for rows with no match in the right table, the
+        right-side columns are filled with NULL. Use LEFT JOIN when you cannot afford to lose rows from your primary
+        table, such as when auditing all customers including those with no orders.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q5 — CONCEPTUAL</div>
+    <p class="q-text">What is the difference between UNION and UNION ALL?</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <p>Both combine result sets from two SELECT queries. UNION removes duplicate rows, which requires an extra
+        deduplication step and is slower. UNION ALL keeps all rows including duplicates and is faster. Use UNION when
+        uniqueness matters; use UNION ALL when you know duplicates do not exist or performance matters more.</p>
+    </div>
+  </div>
+
+  <p class="sec-label">query-writing questions</p>
+
+  <div class="q-item">
+    <div class="q-num">Q6 — WRITE A QUERY</div>
+    <p class="q-text">Find the second-highest amount in the orders table.</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <pre><span class="kw">SELECT MAX</span>(amount)
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  amount < (
+  <span class="kw">SELECT MAX</span>(amount) <span class="kw">FROM</span> orders
+);</pre>
+      <p style="margin-top:8px">Bonus: mention DENSE_RANK() as the more robust approach if the interviewer asks for
+        alternatives.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q7 — WRITE A QUERY</div>
+    <p class="q-text">Find customers who have placed more than one order.</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <pre><span class="kw">SELECT</span> customer, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> order_count
+<span class="kw">FROM</span>   orders
+<span class="kw">GROUP BY</span> customer
+<span class="kw">HAVING COUNT</span>(*) > 1;</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q8 — WRITE A QUERY</div>
+    <p class="q-text">Show total revenue per city, only for cities above ₹15,000 in paid orders.</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <pre><span class="kw">SELECT</span> city, <span class="kw">SUM</span>(amount) <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+<span class="kw">GROUP BY</span> city
+<span class="kw">HAVING SUM</span>(amount) > 15000;</pre>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q9 — WRITE A QUERY</div>
+    <p class="q-text">List all customers and their total paid revenue — include customers with zero paid orders.</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <pre><span class="kw">SELECT</span>
+  c.name,
+  <span class="kw">COALESCE</span>(<span class="kw">SUM</span>(o.amount), 0) <span class="kw">AS</span> paid_revenue
+<span class="kw">FROM</span>      customers c
+<span class="kw">LEFT JOIN</span> orders     o
+          <span class="kw">ON</span>  c.name   = o.customer
+         <span class="kw">AND</span>  o.status = <span class="str">'paid'</span>
+<span class="kw">GROUP BY</span>  c.name
+<span class="kw">ORDER BY</span>  paid_revenue <span class="kw">DESC</span>;</pre>
+      <p style="margin-top:8px">Key point: the status filter goes in the ON clause, not WHERE. Putting it in WHERE would
+        silently convert the LEFT JOIN into an INNER JOIN and drop customers with zero orders.</p>
+    </div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q10 — WRITE A QUERY</div>
+    <p class="q-text">Find orders where the amount is above the average amount of all paid orders.</p>
+    <button class="q-toggle" onclick="tog(this)">Show answer</button>
+    <div class="q-body">
+      <pre><span class="kw">SELECT</span> customer, amount, status
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  amount > (
+  <span class="kw">SELECT AVG</span>(amount)
+  <span class="kw">FROM</span>   orders
+  <span class="kw">WHERE</span>  status = <span class="str">'paid'</span>
+)
+<span class="kw">ORDER BY</span> amount <span class="kw">DESC</span>;</pre>
+    </div>
+  </div>
+
+  <div
+    style="background:#EAF3DE;border:0.5px solid #97C459;border-radius:var(--border-radius-lg);padding:14px 16px;margin-top:1.5rem">
+    <p style="font-size:13px;color:#27500A;line-height:1.65"><strong>Interview tip from a founder:</strong> When writing
+      queries live, narrate your reasoning. Say "I need to group first, then filter groups, so I'll use HAVING not
+      WHERE." The candidate who explains a slightly wrong query with clarity often beats the one who writes the right
+      query in silence. Interviewers hire for thinking, not memorisation.</p>
+  </div>
+
+  <button style="margin-top:1rem;width:100%"
+    onclick="sendPrompt('Give me 5 harder SQL interview questions at the intermediate level with detailed answers')">Give
+    me 5 harder questions ↗</button>
+</div>
+
+<script>
+  function go(id, btn) {
+    document.querySelectorAll('.pg').forEach(p => p.classList.remove('on'));
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('on');
+    btn.classList.add('active');
+  }
+  function tog(btn) {
+    const b = btn.nextElementSibling;
+    const open = b.style.display === 'block';
+    b.style.display = open ? 'none' : 'block';
+    btn.textContent = open ? 'Show answer' : 'Hide answer';
+  }
+</script>
