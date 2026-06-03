@@ -30,7 +30,7 @@ Mode Analytics also has a good beginner SQL tutorial if you prefer a narrative f
 **Optimized prompt defining founder persona:**_
 You are a founder. Explain the basics of SQL to a complete beginner, increasing difficulty with different queries. Provide examples and real life usage of these queries and give interview questions asked for fresher roles that require SQL .
 _**Output:**_
-file:///C:/Users/Acer/Downloads/founder_sql_guide.html
+Refer to code
 
 **Optimized prompt defining developer persona:**_
 You are an experienced SQL develepor. Explain SQL basics to a complete beginner and progressively increase difficulty with example queries. 
