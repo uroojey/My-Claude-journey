@@ -27,6 +27,11 @@ Understanding this order explains *why* you can't use a `WHERE` clause on an agg
 For practice, HackerRank's SQL track and LeetCode's SQL section are excellent free resources with instant feedback. 
 Mode Analytics also has a good beginner SQL tutorial if you prefer a narrative format.
 
+**Optimized prompt defining founder persona:**_
+You are a founder. Explain the basics of SQL to a complete beginner, increasing difficulty with different queries. Provide examples and real life usage of these queries and give interview questions asked for fresher roles that require SQL .
+_**Output:**_
+file:///C:/Users/Acer/Downloads/founder_sql_guide.html
+
 **Optimized prompt defining developer persona:**_
 You are an experienced SQL develepor. Explain SQL basics to a complete beginner and progressively increase difficulty with example queries. 
 For each level, include: 1) A short explanation of the concept
@@ -60,3 +65,10 @@ Data Types & Modeling — a reference table of common types, primary/foreign key
 Real-life usage scenarios — business reporting, data cleaning, analytics/KPI tracking, app backend queries, and ETL migration patterns — each with a runnable example.
 15 interview Q&As — split into Conceptual, Query Writing, and Advanced sections, with full talking-point answers for each.
 The document closes with a quick-reference cheat sheet covering clause execution order, common functions, and recommended practice resources (HackerRank, LeetCode, SQLZoo, Mode Analytics, DB Fiddle).
+
+
+**Key Learnings**__
+Role Prompting changes the way the AI thinks and responds.
+Defining right persona can help us get optimized outputs that don't need follow-ups.
+It not only saves time but also gives better results with lesser mistakes.
+
