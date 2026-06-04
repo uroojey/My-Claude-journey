@@ -108,6 +108,7 @@ def save_roadmap(content: str, filename: str = "roadmap_output.md") -> None:
         f.write(content)
     print(f"✅ Roadmap saved to: {filename}")
 
+![Alternative description text](assets/dashboard-screenshot.png)
 
 # ── Demo ──────────────────────────────────────────────────────────────────────
 
