@@ -1,5 +1,5 @@
 
-# DAy 8/60 of 60 days AI challenge
+# Day 8/60 of 60 days AI challenge
 
 
 Learnings:
