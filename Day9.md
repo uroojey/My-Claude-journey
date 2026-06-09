@@ -65,4 +65,7 @@ Structured custom validation strategies blocking empty data nodes or negative nu
 3. **Advanced AI Meal Parser:** Leveraging LLM processing nodes via edge APIs to turn simple strings (e.g., *"had 2 rotis and a bowl of yellow dal"*) into direct normalized food metrics.
 
 ---
+## 🔗 Project Link
+* View the source code directly here: [nutri-scope.html](./nutri-scope.html)
+
 **#60DaysOfCode #ClaudeChallenge #WebDevelopment #JavaScript #UIUX #BuildInPublic**
