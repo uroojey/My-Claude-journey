@@ -110,7 +110,8 @@ Text:       #111827 (primary) / #6b7280 (muted)
 Features:   Collapsible sections, hover states, responsive grid, badge pills
 ```
 
-![Skill Design System – Badge & Color Preview](C:\Users\Acer\Pictures\Screenshots\Screenshot 2026-06-18 180732.png)
+![Skill Design System – Badge & Color Preview](<img width="1112" height="737" alt="day18-skill-design-system png" src="https://github.com/user-attachments/assets/2c67e640-6a83-4f31-beaf-a5b7af1fbd21" />
+)
 
 ---
 
@@ -206,7 +207,7 @@ deploy the projects on github
 **Key behavior demonstrated:**
 > The dashboard surfaced the missing deadline as a 🔴 High Priority blocker — making a known-but-ignored gap impossible to dismiss.
 
-![Dashboard 2 – Personal Task List](C:\Users\Acer\Pictures\Screenshots\Screenshot 2026-06-18 180747.png)
+![Dashboard 2 – Personal Task List](day18-dashboard-personal-tasks.png)
 
 ---
 
