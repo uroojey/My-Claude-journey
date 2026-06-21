@@ -17,7 +17,6 @@ No external APIs. No private databases accessed. All inferences are clearly labe
 
 ## Dashboard screenshot placeholders
 
-> _Replace the placeholders below with actual screenshots after opening the HTML file in your browser._
 
 ### Overall scores panel
 ```
