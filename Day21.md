@@ -51,7 +51,7 @@ No external APIs. No private databases accessed. All inferences are clearly labe
 ### Risk radar
 *6 axes — Identity Linkage 90 · Data Breadth 88 · Tracking Depth 85 · Third-party Sharing 80 · Geo Spread 70 · Financial Exposure 60*
 
-![Risk radar chart — 6-axis spider chart]([assets/screenshots/day21_radar.png)](https://github.com/uroojey/My-Claude-journey/issues/1)
+![Risk radar chart — 6-axis spider chart][(https://github.com/uroojey/My-Claude-journey/issues/1)]
 
 ---
 
