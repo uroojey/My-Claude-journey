@@ -12,18 +12,10 @@ No external APIs. No private databases accessed. All inferences are clearly labe
 
 ---
 
-## Dashboard screenshots
-
-> **How to add screenshots:**
-> 1. Open `day21_privacy_dashboard.html` in your browser
-> 2. Take a screenshot of each section
-> 3. In your GitHub repo, go to **Issues → New Issue**, drag-drop each image to get a hosted URL, then copy the URL
-> 4. Replace each `assets/screenshots/filename.png` path below with your actual image URL or relative file path
-
 ### Overall scores panel
 *Digital Footprint Score (82/100 — Extensive) · Privacy Score (40/100 — Fair) · ring chart visualisation*
 
-![Overall scores panel — footprint 82, privacy 40][assets/screenshots/day21_scores.png](https://github.com/uroojey/My-Claude-journey/issues/2)]
+![Overall scores panel — footprint 82, privacy 40][(https://github.com/uroojey/My-Claude-journey/issues/2)]
 
 ---
 
