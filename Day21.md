@@ -21,45 +21,14 @@ No external APIs. No private databases accessed. All inferences are clearly labe
 
 ### Overall scores panel
 ```
-[ Screenshot: Digital Footprint Score (82/100 — Extensive) and Privacy Score (40/100 — Fair) with ring charts ]
-```
-
-### Exposure heatmap
-```
-[ Screenshot: 10-cell heatmap grid showing data exposure intensity by category — red cells for behavioural patterns, content interests, identity data ]
-```
-
-### Company exposure ranking
-```
-[ Screenshot: Ranked list — Google 95, Meta 82, ByteDance 78, Snap 70, Amazon 68, Spotify 52, Discord/etc 45 ]
-```
-
-### Data collection matrix
-```
-[ Screenshot: Cross-reference table — 7 companies × 7 data types with ✓ / ○ indicators ]
+[ <img width="968" height="557" alt="screenshot_scores" src="https://github.com/user-attachments/assets/52b9ddc8-47ea-4f5a-b15a-bebfdc81afb9" />]
 ```
 
 ### Risk radar
 ```
-[ Screenshot: Radar chart across 6 axes — Identity Linkage 90, Data Breadth 88, Tracking Depth 85, Third-party Sharing 80, Geo Spread 70, Financial Exposure 60 ]
+[ <img width="947" height="521" alt="screenshot_heatmap" src="https://github.com/user-attachments/assets/5526ab6d-7810-4e24-bef3-c799cb755fb8" />
+ ]
 ```
-
-### Digital twin profile
-```
-[ Screenshot: 12-cell profile grid — age range, device ecosystem, income signal, content type, payment behaviour, etc. ]
-```
-
-### Most valuable data assets
-```
-[ Screenshot: Ranked asset list — Behavioural intent signals 98, Purchase & payment history 93, Content preference graph 88 ]
-```
-
-### Privacy improvement simulator
-```
-[ Screenshot: Checkbox simulator — 6 toggleable actions with live score updating from 40 → projected ceiling of 78 ]
-```
-
----
 
 ## Generated HTML file
 
