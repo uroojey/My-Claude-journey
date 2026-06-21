@@ -23,56 +23,14 @@ No external APIs. No private databases accessed. All inferences are clearly labe
 ### Overall scores panel
 *Digital Footprint Score (82/100 — Extensive) · Privacy Score (40/100 — Fair) · ring chart visualisation*
 
-![Overall scores panel — footprint 82, privacy 40](assets/screenshots/day21_scores.png)
-
----
-
-### Exposure heatmap
-*10-cell grid showing data exposure intensity by category — location, behavioural patterns, content interests at critical level*
-
-![Exposure heatmap — 10 data categories colour-coded by risk](assets/screenshots/day21_heatmap.png)
-
----
-
-### Company exposure ranking
-*Google 95 · Meta 82 · ByteDance 78 · Snap 70 · Amazon 68 · Spotify 52 · Discord/etc 45*
-
-![Company exposure ranking with progress bars and risk badges](assets/screenshots/day21_company_ranking.png)
-
----
-
-### Data collection matrix
-*7 companies × 7 data types — identity, location, behaviour, financial, social, content, device*
-
-![Data collection matrix — cross-reference table](assets/screenshots/day21_matrix.png)
+![Overall scores panel — footprint 82, privacy 40]([assets/screenshots/day21_scores.png](https://github.com/uroojey/My-Claude-journey/issues/2))
 
 ---
 
 ### Risk radar
-*6 axes — Identity Linkage 90 · Data Breadth 88 · Tracking Depth 85 · Third-party Sharing 80 · Geo Spread 70 · Financial Exposure 60*
+*6 axes — Ientity Linkage 90 · Data Breadth 88 · Tracking Depth 85 · Third-party Sharing 80 · Geo Spread 70 · Financial Exposure 60*
 
 ![Risk radar chart — 6-axis spider chart][(https://github.com/uroojey/My-Claude-journey/issues/1)]
-
----
-
-### Digital twin profile
-*12-cell inference grid — age range, device ecosystem, income signal, content type, payment behaviour, gaming profile, and more*
-
-![Digital twin profile — 12 inferred attributes with confidence levels](assets/screenshots/day21_twin.png)
-
----
-
-### Most valuable data assets
-*Ranked by estimated commercial value — Behavioural intent 98 · Purchase history 93 · Content graph 88*
-
-![Most valuable data assets — ranked bar list](assets/screenshots/day21_assets.png)
-
----
-
-### Privacy improvement simulator
-*Interactive checkbox simulator — 6 toggleable actions · live score update from 40 → projected ceiling 78*
-
-![Privacy improvement simulator — live interactive score calculator](assets/screenshots/day21_simulator.png)
 
 ---
 
