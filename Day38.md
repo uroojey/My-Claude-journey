@@ -1,4 +1,4 @@
-# Day 38 — Typing Speed Studio
+# Day 38:  Typing Speed Studio
 ### #60DayClaudeChallenge
 
 *Catching up for the day 38.*
