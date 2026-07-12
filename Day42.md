@@ -1,4 +1,4 @@
-# Day 43 — Personal Financial Command Center
+# Day 42 — Personal Financial Command Center
 
 **#60DayClaudeChallenge** · Built with [Claude](https://claude.ai)
 
@@ -75,7 +75,7 @@ day43/
 
 ## Part of #60DayClaudeChallenge
 
-Day 43 of 60. A new Claude-built project every day, documented in public.
+Day 42 of 60. A new Claude-built project every day, documented in public.
 
 - LinkedIn: [linkedin.com/in/uroojey](https://linkedin.com/in/uroojey)
 - GitHub: [github.com/uroojey](https://github.com/uroojey)
